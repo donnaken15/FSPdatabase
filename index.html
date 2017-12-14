@@ -34,14 +34,14 @@ function addRow(name, url, isdir,
     link.addEventListener("dragstart", onDragStart, false);
   }
   link.innerText = name;
-  link.href = root + url;
+  link.href = "fastgh3://donnaken15.github.io/songs/" + url + ".fsp";
 
   file_cell.dataset.value = name;
   file_cell.appendChild(link);
 
   row.appendChild(file_cell);
-  row.appendChild(createCell(size, size_string));
   row.appendChild(createCell(date_modified, date_modified_string));
+  row.appendChild(createCell(size, size_string));
 
   tbody.appendChild(row);
 }
@@ -207,11 +207,11 @@ function sortTable(column) {
   <thead>
     <tr class="header" id="theader">
       <th onclick="javascript:sortTable(0);">Name</th>
-      <th class="detailsColumn" onclick="javascript:sortTable(2);">
-        Artist
-      </th>
       <th class="detailsColumn" onclick="javascript:sortTable(1);">
         Size
+      </th>
+      <th class="detailsColumn" onclick="javascript:sortTable(2);">
+        Artist
       </th>
     </tr>
   </thead>
@@ -644,6 +644,6 @@ i18nTemplate.process(document, loadTimeData);
 
 </script><script>start("the FastGH3 song database");</script>
 <script>onHasParentDirectory();</script>
-<script>addRow("Bodysnatchers","fastgh3://donnaken15.github.io/songs/bodysnatchers.fsp",0,0,"0 B",0,"Radiohead");</script>
+<script>addRow("Bodysnatchers","bodysnatchers",0,0,"0 B",0,"Radiohead");</script>
 <script>addRow("b.txt","b.txt",0,0,"0 B",0,"12/14/17, 3:53:23 PM");</script>
 <script>addRow("c.txt","c.txt",0,0,"0 B",0,"12/14/17, 3:53:23 PM");</script>
