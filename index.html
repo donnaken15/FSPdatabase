@@ -159,7 +159,7 @@ function sortTable(column) {
   }
 
   a.file {
-    background : url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABnRSTlMAAAAAAABupgeRAAABHUlEQVR42o2RMW7DIBiF3498iHRJD5JKHurL+CRVBp+i2T16tTynF2gO0KSb5ZrBBl4HHDBuK/WXACH4eO9/CAAAbdvijzLGNE1TVZXfZuHg6XCAQESAZXbOKaXO57eiKG6ft9PrKQIkCQqFoIiQFBGlFIB5nvM8t9aOX2Nd18oDzjnPgCDpn/BH4zh2XZdlWVmWiUK4IgCBoFMUz9eP6zRN75cLgEQhcmTQIbl72O0f9865qLAAsURAAgKBJKEtgLXWvyjLuFsThCSstb8rBCaAQhDYWgIZ7myM+TUBjDHrHlZcbMYYk34cN0YSLcgS+wL0fe9TXDMbY33fR2AYBvyQ8L0Gk8MwREBrTfKe4TpTzwhArXWi8HI84h/1DfwI5mhxJamFAAAAAElFTkSuQmCC ") left top no-repeat;
+    background : url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4xMzQDW3oAAAIgSURBVDhPzVJLa5pRELV020L/QRfdVCEppqUl0lW3XSm60Cj4gKiERA3iA6PiQowLH1BLVTB17TMYQSqCK92oKESE6iJCKe0vaBdST2dubCGQrLrpwPAdZs45M/feT/L/BYB7y+XyLeWHq6urNuUnwlmucW9DuzuSyeTebDbDYrH4m/P5HNPpFPF4fG9Duz12KBQKxapUKmE8HgshJ+NyuYzd3d3V1tbWzoZ+M8Lh8FOLxfJFJpNBLpfDYDDA7/fD5/MJzDWpVMr4q8PhkG5k1xGNRmVut/u7Wq2GTqeD1WrF8fExTk9PEYvF4HK5sL+/D61WK5IMvh0dHW0LMV8MkS7NZjPYgL9OpxPpdBoXFxc4Pz/ns4MEMBqNgmO32xGJRD5rNJr7EiI8DAQCv1QqFfR6PWw2G7xeL87OztBqtdBsNpHJZODxeMQWzGEuadapVOqRhMjPeEWlUgmTyYSDgwOEQiEUi0VhwMlmwWBQ9JjDBoxp0xcSOvs2XSDITUzmVQ8PD3kCEokE6FmFmI9FZxebMJeH0FGes8GTk5OTdS6XQ71eR7vdFlMbjQaq1SoqlYrAXONerVZDPp8Hadjg+jVog3w2m11zs9PpoN/vYzgcYjKZiGTMNe4xh4ataYOPQvwnCoXCa5r4jkiXvV7vx2AwWNEPtOZkTAY/qTclg/d0J282stuj2+0+GI1Gj0n4igxeMubapn0z6D/4h4TkN8LazgOc9332AAAAAElFTkSuQmCC ") left top no-repeat;
   }
 
   a.dir {
@@ -222,27 +222,14 @@ function sortTable(column) {
 </body>
 
 </html>
-<script>// Copyright (c) 2012 The Chromium Authors. All rights reserved.
+<script>
+    
+// Copyright (c) 2012 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
+    
+var loadTimeData;
 
-/**
- * @fileoverview This file defines a singleton which provides access to all data
- * that is available as soon as the page's resources are loaded (before DOM
- * content has finished loading). This data includes both localized strings and
- * any data that is important to have ready from a very early stage (e.g. things
- * that must be displayed right away).
- *
- * Note that loadTimeData is not guaranteed to be consistent between page
- * refreshes (https://crbug.com/740629) and should not contain values that might
- * change if the page is re-opened later.
- */
-
-/** @type {!LoadTimeData} */ var loadTimeData;
-
-// Expose this type globally as a temporary work around until
-// https://github.com/google/closure-compiler/issues/544 is fixed.
-/** @constructor */
 function LoadTimeData(){}
 
 (function() {
@@ -641,12 +628,6 @@ var i18nTemplate = (function() {
     }
   }
 
-  /**
-   * Run through various [i18n-*] attributes and populate.
-   * @param {!Element} element
-   * @param {!LoadTimeData} data
-   * @param {!Set<ProcessingRoot>} visited
-   */
   function processElement(element, data, visited) {
     for (var i = 0; i < attributeNames.length; i++) {
       var name = attributeNames[i];
