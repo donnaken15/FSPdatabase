@@ -70,10 +70,6 @@ function onHasParentDirectory() {
   if (!root.endsWith("/"))
     root += "/";
 
-  var link = document.getElementById("parentDirLink");
-  link.href = root + "..";
-}
-
 function onListingParsingError() {
   var box = document.getElementById("listingParsingErrorBox");
   box.innerHTML = box.innerHTML.replace("LOCATION", encodeURI(document.location)
