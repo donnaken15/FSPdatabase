@@ -393,11 +393,6 @@ var i18nTemplate = (function() {
     var importLinks = root.querySelectorAll('link[rel=import]');
     for (var i = 0; i < importLinks.length; ++i) {
       var importLink = /** @type {!HTMLLinkElement} */ (importLinks[i]);
-      if (!importLink.import) {
-        // Happens when a <link rel=import> is inside a <template>.
-        // TODO(dbeam): should we log an error if we detect that here?
-        continue;
-      }
       processWithoutCycles(importLink.import, data, visited, mark);
     }
 
