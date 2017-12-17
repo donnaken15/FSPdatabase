@@ -62,13 +62,6 @@ function createCell(value, text) {
   return cell;
 }
 
-function start(location) {
-  var header = document.getElementById("header");
-  header.innerText = header.innerText.replace("LOCATION", location);
-
-  document.getElementById("title").innerText = header.innerText;
-}
-
 function onHasParentDirectory() {
   var box = document.getElementById("parentDirLinkBox");
   box.style.display = "block";
@@ -437,7 +430,6 @@ var i18nTemplate = (function() {
 
 i18nTemplate.process(document, loadTimeData);
 
-</script><script>start("the FastGH3 song database");</script>
 <script>onHasParentDirectory();</script>
 <script>addRow("Bodysnatchers","bodysnatchers",0,0,"0 B",0,"Radiohead");</script>
 <script>addRow("b.txt","b.txt",0,0,"0 B",0,"Z");</script>
