@@ -254,7 +254,6 @@ function sortTable(column) {
       return a > b ? newOrder : a < b ? oldOrder : 0;
     }
 
-<<<<<<< HEAD
     // Column 0 is text.
     if (a > b)
       return newOrder;
@@ -271,7 +270,5 @@ function sortTable(column) {
 filter = new URL(window.location.href).searchParams;
 filtype = (filter.get("artist") !== null) + ((filter.get("year") !== null)*10) + ((filter.get("album") !== null)*100) + ((filter.get("series") !== null)*1000);if (filtype > 0)
 document.write("<br/><a href='"+window.location.href.split("?")[0]+"'>Clear Filter</a><br/>");sl.send();document.write("Finished loading in "+(Date.now() - starttime)+"ms");</script>
-<br/>
 Contact <a href="mailto:fastgh3@mail.com">fastgh3@mail.com</a> or <a href="http://twitter.com/direct_messages/create/FastGH3">FastGH3's Twitter</a><p/>
 or use <a href="https://goo.gl/forms/FLs4saqqrz0Iikdx1">Google Forms</a> to request an FSP upload.
->>>>>>> origin/master
