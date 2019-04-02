@@ -25,7 +25,7 @@
 
   td.detailsColumn {
     -webkit-padding-start: 2em;
-    text-align: end;
+    text-align: center;
     white-space: nowrap;
   }
 
@@ -37,6 +37,7 @@
   
   a {
     text-decoration: none;
+	text-align: center;
   }
   
   a:hover a.icon:hover {
@@ -69,6 +70,11 @@
     background: #fae691;
     padding: 10px;
     display: none;
+  }
+  
+  table, th, td {
+    border: 1px solid black;
+	padding: 4px;
   }
 </style>
 
@@ -127,13 +133,25 @@ database = ["FUCK JAVASCRIPT", "", "SUCK", ", THEY", "CAN", "A BAG", "OF NUTS! >
     database = this.responseText.split(/\r\n|\r|\n/g);
     for (var i = 0; i < database.length; i += 7)
 	  if (filtype === 0 ||
-	  (filtype === 1 && database[i+3] === filter.get("artist") ||
-	  (filtype === 10 && database[i+4] === filter.get("year")) ||
-	  (filtype === 100 && database[i+5] === filter.get("album")) ||
-	  (filtype === 1000 && database[i+6] === filter.get("series"))))
+	  ( (filtype === 1    && database[i+3] === filter.get("artist") ) ||
+	    (filtype === 10   && database[i+4] === filter.get("year"  ) ) ||
+	    (filtype === 100  && database[i+5] === filter.get("album" ) ) ||
+	    (filtype === 1000 && database[i+6] === filter.get("series") ) ||
+		(filtype === 11   && database[i+3] === filter.get("artist") && database[i+4] === filter.get("year") ) ||
+		(filtype === 101  && database[i+3] === filter.get("artist") && database[i+5] === filter.get("album") ) ||
+		(filtype === 110  && database[i+4] === filter.get("year")   && database[i+5] === filter.get("album") ) ||
+		(filtype === 111  && database[i+3] === filter.get("artist") && database[i+4] === filter.get("year") && database[i+5] === filter.get("album") ) ||
+		(filtype === 1001 && database[i+3] === filter.get("artist") && database[i+6] === filter.get("series") ) ||
+		(filtype === 1011 && database[i+3] === filter.get("artist") && database[i+6] === filter.get("series") && database[i+4] === filter.get("year") ) ||
+		(filtype === 1101 && database[i+3] === filter.get("artist") && database[i+6] === filter.get("series") && database[i+5] === filter.get("album") )
+		))
         addRow(database[i],database[i+1],database[i+2],
 	    database[i+3],database[i+4],database[i+5],database[i+6]);
 		//filtype = (filter.get("author") !== null) + ((filter.get("year") !== null)*2) + ((filter.get("album") !== null)*3) + ((filter.get("series") !== null)*4);
+}
+
+function filterurl() {
+  return window.location.href+(new URL(window.location.href).search.length > 0).toString().replace("false","?").replace("true","&");
 }
 
 function addRow(name, url, size,
@@ -168,11 +186,11 @@ function addRow(name, url, size,
   file_cell.appendChild(link);
 
   row.appendChild(file_cell);
-  row.appendChild(createCell(artist, "<a href='index.html?artist="+artist+"'>"+artist+"</a>"));
-  row.appendChild(createCell(year, "<a href='index.html?year="+year+"'>"+year+"</a>"));
+  row.appendChild(createCell(artist, "<a href='"+filterurl()+"artist="+artist+"'>"+artist+"</a>"));
+  row.appendChild(createCell(year, "<a href='"+filterurl()+"year="+year+"'>"+year+"</a>"));
   row.appendChild(createCell(size, addCommas(size) + " bytes"));
-  row.appendChild(createCell(album, "<a href='index.html?album="+album+"'>"+album+"</a>"));
-  row.appendChild(createCell(series, "<a href='index.html?series="+series+"'>"+series+"</a>"));
+  row.appendChild(createCell(album, "<a href='"+filterurl()+"album="+album+"'>"+album+"</a>"));
+  row.appendChild(createCell(series, "<a href='"+filterurl()+"series="+series+"'>"+series.replace("$gh1","Guitar Hero").replace("$gh2","Guitar Hero II").replace("$gh3","Guitar Hero III: Legends of Rock").replace("$gh4","Guitar Hero: World Tour").replace("$gh5","Guitar Hero 5").replace("$gh6","Guitar Hero: Warriors of Rock").replace("$rb1","Rock Band").replace("$rb2","Rock Band 2").replace("$rb3","Rock Band 3")+"</a>"));
 
   tbody.appendChild(row);
 }
@@ -269,6 +287,7 @@ function sortTable(column) {
 }
 filter = new URL(window.location.href).searchParams;
 filtype = (filter.get("artist") !== null) + ((filter.get("year") !== null)*10) + ((filter.get("album") !== null)*100) + ((filter.get("series") !== null)*1000);if (filtype > 0)
-document.write("<br/><a href='"+window.location.href.split("?")[0]+"'>Clear Filter</a><br/>");sl.send();document.write("Finished loading in "+(Date.now() - starttime)+"ms");</script>
-Contact <a href="mailto:fastgh3@mail.com">fastgh3@mail.com</a> or <a href="http://twitter.com/direct_messages/create/FastGH3">FastGH3's Twitter</a><p/>
+document.write("<a href='"+window.location.href.split("?")[0]+"'>Clear Filter</a><br/><br/>");
+sl.send();document.write("Finished loading in "+(Date.now() - starttime)+"ms");</script><br/><br/>
+Contact <a href="mailto:fastgh3@mail.com">fastgh3@mail.com</a> or <a href="http://twitter.com/direct_messages/create/FastGH3">FastGH3's Twitter</a><br/>
 or use <a href="https://goo.gl/forms/FLs4saqqrz0Iikdx1">Google Forms</a> to request an FSP upload.
